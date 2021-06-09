@@ -83,7 +83,9 @@ ACTOR Future<int> spawnProcess(std::string binPath,
 
 static auto fork_child(const std::string& path, std::vector<char*>& paramList) {
 	int pipefd[2];
-	pipe(pipefd);
+	if (pipe(pipefd) != 0) {
+		_exit(EXIT_FAILURE);
+	}
 	auto readFD = pipefd[0];
 	auto writeFD = pipefd[1];
 	pid_t pid = fork();

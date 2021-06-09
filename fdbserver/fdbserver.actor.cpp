@@ -517,7 +517,7 @@ static void printOptionUsage(std::string option, std::string description) {
 
 	std::stringstream sstream(description);
 	if (sstream.eof()) {
-		printf(result.c_str());
+		printf("%s", result.c_str());
 		return;
 	}
 
@@ -540,7 +540,7 @@ static void printOptionUsage(std::string option, std::string description) {
 	}
 	result += currLine + '\n';
 
-	printf(result.c_str());
+	printf("%s", result.c_str());
 }
 
 static void printUsage(const char* name, bool devhelp) {
@@ -618,7 +618,7 @@ static void printUsage(const char* name, bool devhelp) {
 	                 " resolution, grv_proxy, commit_proxy, master, test, unset, stateless, log, router,"
 	                 " and cluster_controller).");
 #ifndef TLS_DISABLED
-	printf(TLS_HELP);
+	printf("%s", TLS_HELP);
 #endif
 	printOptionUsage("-v, --version", "Print version information and exit.");
 	printOptionUsage("-h, -?, --help", "Display this help and exit.");
